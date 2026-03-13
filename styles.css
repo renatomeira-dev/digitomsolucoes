@@ -1,0 +1,862 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style: none;
+    font-family: "Montserrat", sans-serif;
+}
+
+body {
+    font-family: "Montserrat", sans-serif;
+    background: linear-gradient(135deg, #0f0f1e 0%, #1f1f3a 100%);
+    color: #fff;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+header {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    padding: 20px 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 3;
+}
+
+.logo {
+    font-family: "Orbitron", sans-serif;
+    font-size: 2rem;
+    font-weight: 900;
+    color: #00f7ff;
+    text-shadow: 0 0 10px rgba(0, 247, 255, 0.5);
+}
+
+header nav ul {
+    display: flex;
+    gap: 48px;
+}
+
+header nav ul li {
+    list-style: none;
+}
+
+header nav ul li a {
+    position: relative;
+    text-decoration: none;
+    color: #fff;
+    padding: 5px 0;
+    display: inline-block;
+}
+
+header nav ul li a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 2px;
+    background-color: #00f7ff;
+    transition: width 0.2s ease;
+}
+
+header nav ul li a:hover::after {
+    width: 100%;
+    color: #00f7ff;
+}
+
+main {
+    flex: 1;
+    padding-bottom: 10px;
+}
+
+.footer {
+    background: radial-gradient(circle, rgba(15, 15, 30, 0) 100%);
+    font-size: 14px;
+    text-align: center;
+    padding: 15px 5px;
+    margin-top: 5px;
+}
+
+.footer h3 {
+    margin: 6px 0 2px 0;
+    font-size: 15px;
+}
+
+.footer p {
+    margin: 0;
+}
+
+.footer-bottom {
+    text-align: center;
+    margin-top: 5px;
+    border-top: 1px solid #334155;
+    padding-top: 10px;
+    background: radial-gradient(circle, rgba(0, 247, 255, 0.2) 0%, rgba(15, 15, 30, 0) 70%);
+    font-size: 14px;
+}
+
+.container {
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+}
+
+.container::before {
+    content: '';
+    width: 500px;
+    height: 500%;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(0, 247, 255, 0.2) 0%, rgba(15, 15, 30, 0) 70%);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    filter: blur(50px);
+    z-index: 1;
+    animation: pulse 8s infinite alternate;
+    pointer-events: none;
+}
+
+@keyframes pulse {
+    0% {
+        opacity: 0.5;
+        transform: translate(-50%, -50%) scale(0.05);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1.5);
+    }
+}
+
+.list {
+    width: 80%;
+    height: 100%;
+    margin: 0 auto;
+    position: relative;
+}
+
+.item {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+
+    /* Animação */
+    transform: translateX(100vw);
+    transition: transform 0.7s ease-in-out, opacuty 0.7s ease-in-out;
+}
+
+.active {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.product-img {
+    width: 45%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 2;
+}
+
+.product-img img {
+    max-width: 80%;
+    max-height: 60%;
+    filter: drop-shadow(0 0 30px rgba(0, 247, 255, 0.3));
+
+    /* Animação */
+    transform: translateX(400px);
+    opacity: 0;
+    transition: transform 0.6s ease, opacity 0.6s ease;
+    transition-delay: 0.5s;
+}
+
+.active .product-img img {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+.content {
+    width: 55%;
+    padding-right: 80px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    z-index: 2;
+    flex-direction: column;
+}
+
+.product-tag {
+    font-size: 1rem;
+    text-transform: uppercase;
+    color: #00f7ff;
+    font-weight: 600;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+
+    /* Animação */
+    transform: translateX(400px);
+    opacity: 0;
+    transition: transform 0.6s ease, opacity 0.6s ease;
+    transition-delay: 0.6s;
+}
+
+.active .product-tag {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+.product-name {
+    font-size: 3.5rem;
+    font-family: "Orbitron", sans-serif;
+    line-height: 1.1;
+    margin-bottom: 20px;
+
+    /* Animação */
+    transform: translateX(400px);
+    opacity: 0;
+    transition: transform 0.6s ease, opacity 0.6s ease;
+    transition-delay: 0.8s;
+}
+
+.active .product-name {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+.description {
+    font-size: 1.1;
+    color: #b8b8d0;
+    line-height: 1.6;
+    margin-bottom: 30px;
+    max-width: 600px;
+
+    /* Animação */
+    transform: translateX(400px);
+    opacity: 0;
+    transition: transform 0.6s ease, opacity 0.6s ease;
+    transition-delay: 0.9s;
+}
+
+.active .description {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+.btn {
+    padding: 12px 16px;
+    background: linear-gradient(90deg, #00f7ff, #0066ff);
+    border-radius: 30px;
+    color: #000;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    border: none;
+    transition: all 0.3s ease;
+}
+
+.btn:hover {
+    background: linear-gradient(90deg, #00ffe0, #0052cc);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 102, 255, 0.5);
+}
+
+.arrows {
+    position: absolute;
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 5;
+}
+
+.arrow-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(0, 247, 255, 0.3);
+
+}
+
+.arrow-btn:hover {
+    background-color: rgba(0, 247, 255, 0.2);
+    border-color: #00f7ff;
+
+}
+
+.indicators {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    z-index: 5;
+}
+
+.numbers {
+    font-family: "Orbitron", sans-serif;
+    font-size: 2rem;
+    font-weight: 800;
+    color: rgba(255, 255, 255, 0.2);
+}
+
+.dots {
+    display: flex;
+    gap: 10px;
+}
+
+.dot {
+    width: 40px;
+    height: 4px;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 2px;
+}
+
+.dot.active {
+    background-color: #00f7ff;
+    box-shadow: 0 0 10px rgba(0, 247, 255, 0.5);
+}
+
+.tech-circle {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.circle {
+    position: absolute;
+    border-radius: 50%;
+    border: 1px solid rgba(0, 247, 255, 0.1);
+}
+
+.circle:nth-child(1) {
+    width: 130px;
+    height: 130px;
+    top: 15%;
+    left: 8%;
+}
+
+.circle:nth-child(2) {
+    width: 230px;
+    height: 230px;
+    top: 60%;
+    left: 80%;
+}
+
+.circle:nth-child(3) {
+    width: 80px;
+    height: 80px;
+    top: 18%;
+    left: 90%;
+}
+
+.circle:nth-child(4) {
+    width: 120px;
+    height: 120px;
+    top: 75%;
+    left: 15%;
+}
+
+/* PÁGINA DE CONTATO */
+.page-section {
+    min-height: 100vh;
+    padding: 120px 10% 40px;
+}
+
+.page-section h1 {
+    font-family: "Orbitron";
+    font-size: 1.5rem;
+    margin-bottom: 60px;
+    color: #00f7ff;
+    text-align: center;
+}
+
+/* BENEFICIOS */
+.benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    justify-items: center;
+    margin-top: 40px;
+}
+
+.section-subtitle {
+    text-align: center;
+    max-width: 800px;
+    margin: 20px auto 10px;
+    font-size: 16px;
+    color: #00f7ff;
+}
+
+.benefit-card {
+    background: #1c1c35;
+    padding: 40px;
+    border-radius: 20px;
+    width: 100%;
+    max-width: 320px;
+    font-family: "Orbitron";
+    transition: 0.3s ease;
+}
+
+.benefit-card h3 {
+    color: #00f7ff;
+    font-size: 1rem;
+}
+
+.benefit-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 0 25px rgba(0, 247, 255, 0.3);
+}
+
+/* CONTATO */
+.contact-page .contact-container {
+    display: flex;
+    gap: 60px;
+    align-items: center;
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 30px;
+}
+
+.contact-form input,
+.contact-form textarea {
+    padding: 12px;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+}
+
+.contact-map {
+    width: 50%;
+    height: 400px;
+}
+
+.contact-map iframe {
+    width: 100%;
+    height: 100%;
+    border-radius: 20px;
+    border: none;
+}
+
+.whatsapp-btn {
+    display: inline-block;
+    margin-top: 20px;
+    background: #25D366;
+    color: #fff;
+    padding: 12px 20px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: 0.3s ease;
+}
+
+.whatsapp-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(37, 211, 102, 0.4);
+}
+
+/* Beneficios */
+@media (max-width: 1024px) {
+    .benefits-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .contact-page .contact-container {
+        flex-direction: column;
+    }
+
+    .contact-map {
+        width: 100%;
+        height: 300px;
+    }
+}
+
+@media (max-width: 600px) {
+    .benefits-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Produtos */
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 40px;
+    margin-top: 60px;
+}
+
+.product-card {
+    background: #1c1c35;
+    padding: 40px;
+    border-radius: 20px;
+    transition: 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.product-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 0 30px rgba(0, 247, 255, 0.3);
+}
+
+.product-card h2 {
+    font-family: "Orbitron", sans-serif;
+}
+
+.web-title {
+    color: #2f6fff;
+}
+
+.agro-title {
+    color: #1db954;
+}
+
+.food-title {
+    color: #ff4d4d;
+}
+
+.agenda-title {
+    color: #f5c542;
+}
+
+.clinicas-title {
+    color: #00c2ff;
+}
+
+.pet-title {
+    color: #ff9f1c;
+}
+
+/* MOBILE */
+.menu-toggle {
+    display: none;
+    font-size: 28px;
+    background: none;
+    border: none;
+    color: #00f7ff;
+    cursor: pointer;
+}
+
+@media(max-width:768px) {
+    header nav {
+        position: absolute;
+        top: 80px;
+        right: 0;
+        background: #0f0f1e;
+        width: 100%;
+        display: none;
+    }
+
+    header nav ul {
+        flex-direction: column;
+        padding: 20px;
+        gap: 20px;
+    }
+
+    header nav.active {
+        display: block;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+}
+
+/* PÁGINA DIGITOM WEB ERP */
+.erp-container {
+    padding: 140px 10%;
+    max-width: 1200px;
+    margin: auto;
+    color: #fff;
+}
+
+.erp-hero {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+    margin-bottom: 100px;
+}
+
+.erp-video img {
+    width: 100%;
+    border-radius: 20px;
+    filter: drop-shadow(0 0 30px rgba(0, 247, 255, .3));
+}
+
+.erp-text h2 {
+    font-family: "Orbitron", sans-serif;
+    font-size: 2.5rem;
+    color: #00f7ff;
+    margin-bottom: 20px;
+}
+
+.erp-text p {
+    color: #b8b8d0;
+    line-height: 1.6;
+    font-size: 1rem;
+}
+
+
+/* FUNCIONALIDADES */
+.erp-features {
+    margin-bottom: 80px;
+}
+
+.erp-features h2 {
+    font-family: "Orbitron", sans-serif;
+    color: #00f7ff;
+    margin-bottom: 40px;
+    font-size: 2rem;
+}
+
+.erp-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+}
+
+.erp-item {
+    background: #1c1c35;
+    padding: 20px;
+    border-radius: 12px;
+    transition: .3s ease;
+}
+
+.erp-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 20px rgba(0, 247, 255, .3);
+}
+
+.erp-item h4 {
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+
+.erp-item p {
+    color: #b8b8d0;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+
+.erp-finance {
+    margin-bottom: 80px;
+}
+
+.erp-finance h2 {
+    font-family: "Orbitron", sans-serif;
+    color: #00f7ff;
+    margin-bottom: 40px;
+    font-size: 2rem;
+}
+
+.erp-integrations {
+    margin-top: 60px;
+    text-align: center;
+}
+
+.erp-integrations p {
+    color: #00f7ff;
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+}
+
+.erp-logos {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+}
+
+.erp-logos img {
+    height: 30px;
+    opacity: .8;
+    transition: .3s;
+}
+
+.erp-logos img:hover {
+    opacity: 1;
+    transform: scale(1.05);
+}
+
+
+/* RESPONSIVO ERP */
+
+@media(max-width:900px) {
+
+    .erp-hero {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .erp-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .erp-text {
+        text-align: center;
+    }
+
+    .erp-video {
+        order: -1;
+    }
+}
+
+/* WHATSAPP */
+.whatsapp-float {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: #25D366;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 20px rgba(0, 0, 0, .4);
+    z-index: 999;
+}
+
+.whatsapp-float img {
+    width: 32px;
+}
+
+.whatsapp-float:hover {
+    transform: scale(1.1);
+}
+
+/* PLANOS */
+.planos {
+    margin-top: 120px;
+}
+
+.planos h2 {
+    font-family: "Orbitron";
+    color: #00f7ff;
+    margin-bottom: 50px;
+    font-size: 2rem;
+}
+
+.planos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 30px;
+}
+
+.plano-card {
+    background: #1c1c35;
+    padding: 30px;
+    border-radius: 20px;
+    transition: .3s;
+    text-align: center;
+}
+
+.plano-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 0 30px rgba(0, 247, 255, .3);
+}
+
+.plano-card h3 {
+    font-family: "Orbitron";
+    margin-bottom: 15px;
+}
+
+.plano-preco {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #00f7ff;
+    margin-bottom: 10px;
+}
+
+.plano-preco span {
+    font-size: .9rem;
+    color: #b8b8d0;
+}
+
+.plano-card p {
+    color: #b8b8d0;
+    margin-bottom: 20px;
+    font-size: 14px;
+}
+
+.destaque {
+    border: 2px solid #00f7ff;
+    transform: scale(1.05);
+}
+
+/* MODAL PLANOS */
+
+.modal-planos {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, .7);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+}
+
+.modal-conteudo {
+    position: relative;
+    background: #0f0f1e;
+    padding: 50px;
+    border-radius: 20px;
+    max-width: 900px;
+    width: 90%;
+
+    box-shadow: 0 0 40px rgba(0, 247, 255, .3);
+}
+
+.fechar-modal {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 28px;
+    color: #ffffff;
+    cursor: pointer;
+    width: 35px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: .3s;
+}
+
+.fechar-modal:hover {
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.modal-conteudo h2 {
+    font-family: "Orbitron";
+    color: #00f7ff;
+    margin-bottom: 40px;
+    text-align: center;
+}
