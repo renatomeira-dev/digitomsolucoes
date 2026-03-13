@@ -57,7 +57,11 @@ if (prevButton && nextButton) {
 }
 
 function abrirDigitom() {
-    window.location.href = "pages/digitom-web.html"
+    if (window.location.pathname.includes("/pages/")) {
+        window.location.href = "digitom-web.html"
+    } else {
+        window.location.href = "pages/digitom-web.html"
+    }
 }
 
 document.addEventListener("DOMContentLoaded", function () {
