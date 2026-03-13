@@ -56,7 +56,7 @@ if (prevButton && nextButton) {
     })
 }
 
-fetch("/components/menu.html")
+fetch("./components/menu.html")
     .then(res => res.text())
     .then(data => {
 
@@ -77,7 +77,7 @@ fetch("/components/menu.html")
     })
 
 
-fetch("../components/footer.html")
+fetch("./components/footer.html")
     .then(res => res.text())
     .then(data => {
         const footer = document.getElementById("footer")
