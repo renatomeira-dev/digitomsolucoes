@@ -56,38 +56,8 @@ if (prevButton && nextButton) {
     })
 }
 
-fetch("./components/menu.html")
-    .then(res => res.text())
-    .then(data => {
-
-        const menu = document.getElementById("menu")
-
-        if (menu) {
-            menu.innerHTML = data
-
-            const toggle = document.getElementById("menu-toggle")
-            const nav = document.getElementById("nav-menu")
-
-            if (toggle && nav) {
-                toggle.addEventListener("click", () => {
-                    nav.classList.toggle("active")
-                })
-            }
-        }
-    })
-
-
-fetch("./components/footer.html")
-    .then(res => res.text())
-    .then(data => {
-        const footer = document.getElementById("footer")
-        if (footer) {
-            footer.innerHTML = data
-        }
-    })
-
 function abrirDigitom() {
-    window.location.href = "./pages/digitom-web.html"
+    window.location.href = "pages/digitom-web.html"
 }
 
 document.addEventListener("DOMContentLoaded", function () {
