@@ -57,10 +57,16 @@ if (prevButton && nextButton) {
 }
 
 function abrirDigitom() {
-    if (window.location.pathname.includes("/pages/")) {
+    const base = window.location.hostname.includes("github.io")
+        ? "/digitomsolucoes/"
+        : "/"
+
+    const dentroPaginaProduto = window.location.pathname.includes("/pages/")
+
+    if (dentroPaginaProduto) {
         window.location.href = "digitom-web.html"
     } else {
-        window.location.href = "pages/digitom-web.html"
+        window.location.href = base + "pages/digitom-web.html"
     }
 }
 
